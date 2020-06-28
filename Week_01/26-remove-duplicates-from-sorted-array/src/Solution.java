@@ -6,6 +6,8 @@ import java.util.Arrays;
 class Solution {
     /**
      * 快慢指针法
+     * 慢指针i，快指针j
+     * 快指针每次移动1，作用是发现右侧新的值。慢指针用户指示存储新值的位置，每接收一次值移动1。
      * @param nums
      * @return
      */
@@ -28,6 +30,5 @@ class Solution {
         int[] nums = new int[]{0, 0, 1, 2, 3, 4, 4, 8, 8, 9};
         int len = new Solution().removeDuplicates(nums);
         System.out.println(len);
-        System.out.println(Arrays.toString(nums));
     }
 }
