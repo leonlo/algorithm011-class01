@@ -1,38 +1,38 @@
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
+import java.util.*;
 
+/**
+ * https://leetcode-cn.com/problems/group-anagrams
+ */
 public class Solution {
     /**
-     * stupid++ solution
+     * 排序数组分类
+     * K -> sorted string , V -> original string list
      *
      * @param strs
      * @return
      */
     public List<List<String>> groupAnagrams(String[] strs) {
-        List<char[]> sorted_chars_list = new ArrayList<>();
-        for (String str :
-                strs) {
+        if (strs.length == 0) {
+            return new ArrayList<>();
+        }
+        Map<String, ArrayList<String>> map = new HashMap<>();
+        for (String str : strs) {
             char[] chars = str.toCharArray();
             Arrays.sort(chars);
-            sorted_chars_list.add(chars);
-            System.out.println(chars);
-        }
-
-        int diffIndex = 0;
-        for (int i = 1; i < sorted_chars_list.size(); i++) {
-            if (Arrays.equals(sorted_chars_list.get(i), sorted_chars_list.get(diffIndex))) {
-
+            String key = String.valueOf(chars);
+            if (!map.containsKey(key)) {
+                map.put(key, new ArrayList<>());
             }
+            map.get(key).add(str);
         }
-        return null;
+        return new ArrayList(map.values());
     }
 
     public static void main(String[] args) {
         String[] s = new String[]{"eat", "tea", "tan", "ate", "nat", "bat"};
         List<List<String>> res = new Solution().groupAnagrams(s);
-//        for (List<String> ls : res) {
-//            System.out.println(ls);
-//        }
+        for (List<String> ls : res) {
+            System.out.println(ls);
+        }
     }
 }
