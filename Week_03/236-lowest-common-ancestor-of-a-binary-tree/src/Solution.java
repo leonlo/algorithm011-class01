@@ -1,3 +1,6 @@
+/**
+ * https://leetcode-cn.com/problems/lowest-common-ancestor-of-a-binary-tree/
+ */
 public class Solution {
     public TreeNode lowestCommonAncestor(TreeNode root, TreeNode p, TreeNode q) {
         if (root == null || root == p || root == q) {
